@@ -1,0 +1,116 @@
+#:kivy 2.2.0
+
+ScreenManager:
+    LoginScreen:
+    SignupScreen:
+    HomeScreen:
+<HomeScreen>:
+    name:'home'
+    MDCard:
+        orientation: 'vertical'
+        size_hint: None, None
+        style: "elevated"
+        size: '400dp','600dp'
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        padding: 10
+        spacing: 10
+        MDLabel:
+            text: 'home'
+            halign: 'center'
+            font_style: 'H4'
+        MDRaisedButton:
+            text: 'to change theme'
+            on_release:app.theme() 
+<LoginScreen>:
+    name:'login'
+    MDCard:
+        orientation: 'vertical'
+        elevation: 5
+        pos_hint:{'center_x':.5,'center_y':.5}
+        size_hint: None, None
+        size: '350dp','450dp'
+        padding: 3
+        spacing: 10
+        MDLabel:
+            text: 'Login'
+            halign: 'center'
+            font_size: '25'
+            size_hint_y:None
+            height: self.texture_size[1]
+            padding_y:5
+        MDTextField:
+            mode: "round"
+            pos_hint_y:{'center_y':.10}
+            hint_text:'digite seu e-mail' 
+            icon_right:'email-arrow-right'
+        MDTextField:
+            id:senha_input
+            mode: "round"
+            pos_hint:{'center_x':.5,'center_y':.5}
+            hint_text:'digite sua senha'
+            icon_right:'eye'
+        MDIconButton:
+            id: toggle_button
+            icon: 'eye-off'
+            pos_hint: {'center_x': 0.5}
+            on_press: root.toggle_password()
+        MDRaisedButton:
+            pos_hint:{'center_x':.5,'center_y':.5}
+            text: 'Signup'
+            on_release:app.root.current = 'signup'
+        MDIconButton:
+            icon:'theme-light-dark'
+            text: 'to change theme'
+            on_release:app.theme() 
+       
+<SignupScreen>:
+    name:'signup'
+    MDCard:
+        orientation: 'vertical'
+        elevation: 5
+        pos_hint:{'center_x':.5,'center_y':.5}
+        size_hint: None, None
+        size: '350dp','450dp'
+        padding: 3
+        spacing: 10
+        MDLabel:
+            text: 'Signup'
+            halign: 'center'
+            font_size: '25'
+            size_hint_y:None
+            height: self.texture_size[1]
+            padding_y:5
+        MDTextField:
+            mode: "round"
+            pos_hint_y:{'center_y':.10}
+            hint_text:'digite seu e-mail válido ' 
+            icon_right:'email-plus'
+        MDTextField:
+            mode: "round"
+            pos_hint_y:{'center_y':.10}
+            hint_text:'digite seu número válido ' 
+            icon_right:'cellphone-check'
+        MDTextField:
+            id: senha_s_input
+            mode: "round"
+            pos_hint:{'center_x':.5,'center_y':.5}
+            hint_text:'escolha senha segura'
+            icon_right:'eye'
+        MDTextField:
+            id: confirm_s_input
+            mode: "round"
+            pos_hint:{'center_x':.5,'center_y':.5}
+            hint_text:'confirme sua  senha '
+        MDIconButton:
+            id: toggle_s
+            icon: 'eye-off'
+            pos_hint: {'center_x': 0.5}
+            on_press: root.toggle_password_s()
+        MDRaisedButton:
+            pos_hint:{'center_x':.5,'center_y':.5}
+            text: 'login'
+            on_release:app.root.current = 'login'
+        MDIconButton:
+            icon: 'theme-light-dark'
+            text: 'theme'
+            on_release:app.theme()
